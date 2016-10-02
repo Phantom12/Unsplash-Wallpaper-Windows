@@ -1,4 +1,4 @@
-﻿Build started 3/10/2016 9:37:55 AM.
+﻿Build started 3/10/2016 10:43:31 AM.
      1>Project "E:\UnsplashWallpaper\UnsplashWallpaper\UnsplashWallpaper.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\wegu\Desktop\UnsplashWallpaper\UnsplashWallpaper\curl-7.50.2\builds\libcurl-vc12-x86-release-static-ipv6-sspi-winssl\include\curl" /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D CURL_STATICLIB /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt UnsplashWallpaper.cpp Unsplash_Wei.cpp
@@ -19,4 +19,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.94
+Time Elapsed 00:00:02.83

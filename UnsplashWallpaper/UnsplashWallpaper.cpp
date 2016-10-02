@@ -58,9 +58,9 @@ int main(int argc, char** argv)
 		if (!strcmp(singleOp.c_str(), "--help"))
 		{
 			printf("%s\n", instructions);
-			printf("Press Enter to exit\n");
+			//printf("Press Enter to exit\n");
 			fflush(stdin);
-			getchar();
+			//getchar();
 			return 1;
 		}
 		else

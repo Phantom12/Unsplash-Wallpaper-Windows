@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/Unsplash_GUI"/>
+    <qresource prefix="/image">
+        <file>minecart_cropped.ico</file>
+    </qresource>
+</RCC>

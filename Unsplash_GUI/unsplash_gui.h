@@ -7,6 +7,7 @@
 #include <thread>
 #include "qsystemtrayicon.h"
 #include <QtGui\QCloseEvent>
+#include <VersionHelpers.h>
 
 class Unsplash_GUI : public QMainWindow, public unsplash::Unsplash_Wei
 {
@@ -22,8 +23,9 @@ public slots:
 	void on_Interval_changed();
 	void on_defaultSave_clicked();
 	void on_changeSave_clicked();
-	void on_exit_clicked();
+	void on_hide_clicked();
 	void on_About_clicked();
+	void on_differentWallpaper_clicked(int state);
 
 //protected:
 //	void closeEvent(QCloseEvent* e); //overwrite the close button to minimize the window instead

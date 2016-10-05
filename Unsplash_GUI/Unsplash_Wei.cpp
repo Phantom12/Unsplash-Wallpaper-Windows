@@ -6,12 +6,15 @@
 #include<iostream>
 #include<Windows.h>
 #include<shlobj.h>
+#include<comdef.h>
 
 //#pragma comment(lib, "shell32.lib")
 
 unsplash::Unsplash_Wei::Unsplash_Wei()
 {
 	//curl_global_init(CURL_GLOBAL_DEFAULT);
+
+	differentWallpaperPerMonitor = IsWindows8OrGreater() ? true : false;// if the OS version is not lower than Windows 8, enable different Wallpapers for different monitors
 
 	//initialize the temp image file 
 	char tempFolder[256];
@@ -42,6 +45,8 @@ unsplash::Unsplash_Wei::Unsplash_Wei()
 
 unsplash::Unsplash_Wei::Unsplash_Wei(float interval, std::string saveLoc, int wallpaperW, int wallpaperH)
 {
+	differentWallpaperPerMonitor = IsWindows8OrGreater() ? true : false;
+
 	//initialize the temp image file 
 	char tempFolder[256], picFolder[256];
 	GetTempPathA(256, tempFolder);
@@ -67,18 +72,18 @@ unsplash::Unsplash_Wei::Unsplash_Wei(float interval, std::string saveLoc, int wa
 	this->setRes(wallpaperW, wallpaperH);
 }
 
+unsplash::Unsplash_Wei::~Unsplash_Wei()
+{
+	delete curlIMG, tempIMG, pDesktopWallpaper;
+	curlIMG = NULL;
+	tempIMG = NULL;
+	pDesktopWallpaper = NULL;
+}
+
 void unsplash::Unsplash_Wei::setRes(const int width, const int height)
 {
-	if (!(width*height))
-	{
-		WIDTH = GetSystemMetrics(SM_CXSCREEN);
-		HEIGHT = GetSystemMetrics(SM_CYSCREEN);
-	}
-	else
-	{
-		WIDTH = width;
-		HEIGHT = height;
-	}
+	WIDTH = width;
+	HEIGHT = height;
 }
 
 void unsplash::Unsplash_Wei::setDefaultSaveLoc()
@@ -97,9 +102,60 @@ void unsplash::Unsplash_Wei::setURL()
 	//printf("%d\n", GetSystemMetrics(SM_CXSCREEN));
 	sourceURL = "https://source.unsplash.com/featured/";
 
-	sourceURL += std::to_string(WIDTH);
-	sourceURL += "x";
-	sourceURL += std::to_string(HEIGHT);
+	if (WIDTH*HEIGHT)
+	{
+		sourceURL += std::to_string(WIDTH);
+		sourceURL += "x";
+		sourceURL += std::to_string(HEIGHT);
+	}
+	else if (!differentWallpaperPerMonitor)
+	{
+		sourceURL += std::to_string(GetSystemMetrics(SM_CXSCREEN));
+		sourceURL += "x";
+		sourceURL += std::to_string(GetSystemMetrics(SM_CYSCREEN));
+		
+		std::fstream logFileStream;
+		logFileStream.open("log.txt", std::fstream::out | std::fstream::app);
+		logFileStream << sourceURL.c_str() << std::endl;
+		logFileStream.close(); 
+	}
+	else
+	{
+		RECT dispRect;
+		LPWSTR monitorID[256];
+		memset(monitorID, 0, 256);
+		long lclWidth, lclHeight;
+		HRESULT hr = pDesktopWallpaper->GetMonitorDevicePathAt(monitorIdx, monitorID);
+		if (FAILED(hr))
+		{
+			lclWidth = GetSystemMetrics(SM_CXSCREEN);
+			lclHeight = GetSystemMetrics(SM_CYSCREEN);
+		}
+		else
+		{
+			hr = pDesktopWallpaper->GetMonitorRECT(*monitorID, &dispRect);
+			if (FAILED(hr))
+			{
+				lclWidth = GetSystemMetrics(SM_CXSCREEN);
+				lclHeight = GetSystemMetrics(SM_CYSCREEN);
+			}
+			else
+			{
+				lclWidth = dispRect.right - dispRect.left;
+				lclHeight = dispRect.bottom - dispRect.top;
+			}// end of if GetMonitorRECT failed
+		}// end of if GetMonitorDevicePathAt failed
+
+		sourceURL += std::to_string(lclWidth);
+		sourceURL += "x";
+		sourceURL += std::to_string(lclHeight);
+
+		std::fstream logFileStream;
+		logFileStream.open("log.txt", std::fstream::out | std::fstream::app);
+		logFileStream << sourceURL.c_str() << std::endl;
+		logFileStream.close();
+	}
+	
 	//sourceURL = "https://source.unsplash.com/featured/3840x2160";
 	//printf("%s", sourceURL.c_str()); // not recommended
 	std::cout << sourceURL << std::endl;
@@ -145,39 +201,111 @@ int unsplash::Unsplash_Wei::getIMG()
 	return 0;
 }
 
-int unsplash::Unsplash_Wei::setWallpaper()
+int unsplash::Unsplash_Wei::setWallpaper(const LPWSTR* const monitorID)
 {
-	if (!SystemParametersInfoA(SPI_SETDESKWALLPAPER, 0, (PVOID)tempImgDir.c_str(), 0))
+	if (differentWallpaperPerMonitor)
 	{
-		printf("Error: unable to set the wallpaper\n");
-		/*std::fstream logFileStream;
-		logFileStream.open("log.txt", std::fstream::out | std::fstream::app);
-		logFileStream << "Error: unable to set the wallpaper\n";
-		logFileStream << tempImgDir.c_str() << std::endl;
-		logFileStream.close();*/
-		return -1;
+		std::wstring wTempImgDir = std::wstring(tempImgDir.begin(), tempImgDir.end());
+		HRESULT hr = pDesktopWallpaper->SetWallpaper(*monitorID, wTempImgDir.c_str());
+		if (FAILED(hr))
+		{
+			printf("Error: unable to set the wallpaper\n");
+			return -1;
+		}
 	}
-
+	else
+	{
+		if (!SystemParametersInfoA(SPI_SETDESKWALLPAPER, 0, (PVOID)tempImgDir.c_str(), 0))
+		{
+			printf("Error: unable to set the wallpaper\n");
+			/*std::fstream logFileStream;
+			logFileStream.open("log.txt", std::fstream::out | std::fstream::app);
+			logFileStream << "Error: unable to set the wallpaper\n";
+			logFileStream << tempImgDir.c_str() << std::endl;
+			logFileStream.close();*/
+			return -1;
+		}
+	}
+	
 	printf("wallpaper set\n");
 	return 0;
 }
 
 void unsplash::Unsplash_Wei::loopExec(bool enableKeystroke)
 {
+	HRESULT hrInitilize = CoInitializeEx(NULL, COINIT_APARTMENTTHREADED);// https://msdn.microsoft.com/en-us/library/ms809971.aspx
+	if (FAILED(hrInitilize))
+	{
+		printf("CoInitializeEx failed\n");
+		return;
+	}
+	hrInitilize = CoCreateInstance(__uuidof(DesktopWallpaper), NULL, CLSCTX_ALL, IID_PPV_ARGS(&pDesktopWallpaper));
+	if (FAILED(hrInitilize))
+	{
+		printf("CoCreateInstance failed\n");
+		return;
+	}
+
+	LPWSTR monitorID[256];
+	memset(monitorID, 0, 256);
+	//UINT32 monitorIdx = 0;
+	UINT32 totalMonitor = 0;
+
 	float refreshMsec, retryMsec, waitMsec;
 	if (enableKeystroke)
 	{
 		std::thread keyStrokeDetectThread(&unsplash::Unsplash_Wei::enableKeystrokeCombo, this);
 		while (true)
 		{
+			if (differentWallpaperPerMonitor)
+			{
+				hrInitilize = pDesktopWallpaper->GetMonitorDevicePathCount(&totalMonitor);
+				/*std::fstream logFileStream;
+				logFileStream.open("log.txt", std::fstream::out | std::fstream::app);
+				logFileStream << totalMonitor << std::endl;
+				logFileStream.close();*/
+				if (FAILED(hrInitilize))
+				{
+					printf("get monitor number failed\n");
+					monitorID[0] = L"\0";
+				}
+
+				if (monitorIdx >= totalMonitor) monitorIdx = 0;
+				/*logFileStream.open("log.txt", std::fstream::out | std::fstream::app);
+				logFileStream << monitorIdx << std::endl;
+				logFileStream.close();*/
+				hrInitilize = pDesktopWallpaper->GetMonitorDevicePathAt(monitorIdx, monitorID);
+				/*logFileStream.open("log.txt", std::fstream::out | std::fstream::app);
+				logFileStream << monitorID << std::endl;
+				logFileStream.close();*/
+				//monitorID[0] = L"\0";
+				//if (monitorIdx==1) monitorID[0] = L"\0";
+				if (FAILED(hrInitilize))
+				{
+					printf("get monitor ID failed\n");
+
+					//_com_error err(hrInitilize);
+					/*logFileStream.open("log.txt", std::fstream::out | std::fstream::app);
+					logFileStream << hrInitilize << std::endl;
+					logFileStream.close();*/
+					monitorID[0] = L"\0"; // refresh all the monitors with the same wallpaper
+					//return;
+				}
+			} // end of if (differentWallpaperPerMonitor)
+			else
+				monitorID[0] = L"\0";
+			
 			// redefine the two waiting time every iteration to lay the ground work for future change of refresh time while program running.
 			refreshMsec = refreshPeriod * 3600 * 1000;
 			retryMsec = min(refreshPeriod * 3600 * 1000, 5 * 1000); // if failed, retry every 5s unless the default refresh interval is smaller.
 
-			if (this->getIMG() || this->setWallpaper())
+			if (this->getIMG() || this->setWallpaper(monitorID))
 				waitMsec = retryMsec;
 			else
+			{
 				waitMsec = refreshMsec;
+				monitorIdx++;
+			}
 
 			/*std::fstream logFileStream;
 			logFileStream.open("log.txt", std::fstream::out | std::fstream::app);
@@ -209,18 +337,44 @@ void unsplash::Unsplash_Wei::loopExec(bool enableKeystroke)
 	{
 		while (true)
 		{
+			if (differentWallpaperPerMonitor)
+			{
+				hrInitilize = pDesktopWallpaper->GetMonitorDevicePathCount(&totalMonitor);
+				if (FAILED(hrInitilize))
+				{
+					printf("get monitor number failed\n");
+					monitorID[0] = L"\0";
+				}
+
+				if (monitorIdx >= totalMonitor) monitorIdx = 0;
+				hrInitilize = pDesktopWallpaper->GetMonitorDevicePathAt(monitorIdx, monitorID);
+				if (FAILED(hrInitilize))
+				{
+					printf("get monitor number failed\n");
+					monitorID[0] = L"\0";
+					//return;
+				}
+			} //end of if (differentWallpaperPerMonitor)
+			else
+				monitorID[0] = L"\0";
+
 			// redefine the two waiting time every iteration to lay the ground work for future change of refresh time while program running.
 			refreshMsec = refreshPeriod * 3600 * 1000;
 			retryMsec = min(refreshPeriod * 3600 * 1000, 5 * 1000); // if failed, retry every 5s unless the default refresh interval is smaller.
 
-			if (this->getIMG() || this->setWallpaper())
+			if (this->getIMG() || this->setWallpaper(monitorID))
 				waitMsec = retryMsec;
 			else
+			{
 				waitMsec = refreshMsec;
+				monitorIdx++;
+			}
 
 			Sleep(waitMsec);
 		}
 	} // end of if(enableKeystroke)
+
+	CoUninitialize();
 }
 
 void unsplash::Unsplash_Wei::enableKeystrokeCombo()

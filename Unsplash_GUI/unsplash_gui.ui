@@ -6,18 +6,18 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>484</width>
-    <height>274</height>
+    <width>600</width>
+    <height>400</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Unsplash_GUI</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QGridLayout" name="gridLayout">
+   <layout class="QGridLayout" name="gridLayout_2">
     <item row="0" column="0">
-     <layout class="QVBoxLayout" name="verticalLayout_2">
-      <item>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
          <widget class="QLabel" name="refreshLabel">
@@ -120,20 +120,20 @@
         </item>
        </layout>
       </item>
-      <item>
+      <item row="1" column="0">
        <spacer name="verticalSpacer">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>20</width>
-          <height>40</height>
+          <width>461</width>
+          <height>15</height>
          </size>
         </property>
        </spacer>
       </item>
-      <item>
+      <item row="2" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
          <widget class="QLabel" name="resLabel">
@@ -227,20 +227,90 @@
         </item>
        </layout>
       </item>
-      <item>
-       <spacer name="verticalSpacer_2">
+      <item row="3" column="0">
+       <spacer name="verticalSpacer_4">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
           <width>20</width>
-          <height>40</height>
+          <height>15</height>
          </size>
         </property>
        </spacer>
       </item>
-      <item>
+      <item row="4" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QLabel" name="DifferentWallpapers_label">
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Different Wallpapers on different monitors</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="DifferentWallpapers_label_2">
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>(minimum support: Windows 8)</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_8">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="differentWallpaper_checkBox">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Enable</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="5" column="0">
+       <spacer name="verticalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>461</width>
+          <height>15</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="6" column="0">
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -302,7 +372,7 @@
         </item>
        </layout>
       </item>
-      <item>
+      <item row="7" column="0">
        <spacer name="verticalSpacer_3">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
@@ -315,7 +385,7 @@
         </property>
        </spacer>
       </item>
-      <item>
+      <item row="8" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_4">
         <item>
          <spacer name="horizontalSpacer_2">
@@ -401,7 +471,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>484</width>
+     <width>600</width>
      <height>21</height>
     </rect>
    </property>
@@ -428,8 +498,8 @@
    <slot>on_About_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>139</x>
-     <y>242</y>
+     <x>170</x>
+     <y>368</y>
     </hint>
     <hint type="destinationlabel">
      <x>250</x>
@@ -444,8 +514,8 @@
    <slot>on_Refresh_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>246</x>
-     <y>242</y>
+     <x>337</x>
+     <y>368</y>
     </hint>
     <hint type="destinationlabel">
      <x>388</x>
@@ -460,8 +530,8 @@
    <slot>on_Res_changed()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>408</x>
-     <y>99</y>
+     <x>588</x>
+     <y>109</y>
     </hint>
     <hint type="destinationlabel">
      <x>463</x>
@@ -476,8 +546,8 @@
    <slot>on_Interval_changed()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>420</x>
-     <y>55</y>
+     <x>588</x>
+     <y>63</y>
     </hint>
     <hint type="destinationlabel">
      <x>474</x>
@@ -492,8 +562,8 @@
    <slot>on_defaultSave_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>353</x>
-     <y>136</y>
+     <x>506</x>
+     <y>229</y>
     </hint>
     <hint type="destinationlabel">
      <x>310</x>
@@ -508,8 +578,8 @@
    <slot>on_changeSave_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>440</x>
-     <y>126</y>
+     <x>587</x>
+     <y>229</y>
     </hint>
     <hint type="destinationlabel">
      <x>395</x>
@@ -521,15 +591,31 @@
    <sender>exitButton</sender>
    <signal>clicked()</signal>
    <receiver>Unsplash_GUIClass</receiver>
-   <slot>on_exit_clicked()</slot>
+   <slot>on_hide_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>391</x>
-     <y>236</y>
+     <x>503</x>
+     <y>368</y>
     </hint>
     <hint type="destinationlabel">
      <x>460</x>
      <y>227</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>differentWallpaper_checkBox</sender>
+   <signal>stateChanged(int)</signal>
+   <receiver>Unsplash_GUIClass</receiver>
+   <slot>on_differentWallpaper_clicked(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>543</x>
+     <y>157</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>490</x>
+     <y>120</y>
     </hint>
    </hints>
   </connection>
@@ -541,6 +627,7 @@
   <slot>on_Interval_changed()</slot>
   <slot>on_defaultSave_clicked()</slot>
   <slot>on_changeSave_clicked()</slot>
-  <slot>on_exit_clicked()</slot>
+  <slot>on_hide_clicked()</slot>
+  <slot>on_differentWallpaper_clicked(int)</slot>
  </slots>
 </ui>

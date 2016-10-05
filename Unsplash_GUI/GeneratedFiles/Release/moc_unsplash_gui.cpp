@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Unsplash_GUI_t {
-    QByteArrayData data[12];
-    char stringdata0[205];
+    QByteArrayData data[14];
+    char stringdata0[241];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,17 +36,20 @@ QT_MOC_LITERAL(3, 33, 14), // "on_Res_changed"
 QT_MOC_LITERAL(4, 48, 19), // "on_Interval_changed"
 QT_MOC_LITERAL(5, 68, 22), // "on_defaultSave_clicked"
 QT_MOC_LITERAL(6, 91, 21), // "on_changeSave_clicked"
-QT_MOC_LITERAL(7, 113, 15), // "on_exit_clicked"
+QT_MOC_LITERAL(7, 113, 15), // "on_hide_clicked"
 QT_MOC_LITERAL(8, 129, 16), // "on_About_clicked"
-QT_MOC_LITERAL(9, 146, 17), // "trayMenuActivated"
-QT_MOC_LITERAL(10, 164, 33), // "QSystemTrayIcon::ActivationRe..."
-QT_MOC_LITERAL(11, 198, 6) // "reason"
+QT_MOC_LITERAL(9, 146, 29), // "on_differentWallpaper_clicked"
+QT_MOC_LITERAL(10, 176, 5), // "state"
+QT_MOC_LITERAL(11, 182, 17), // "trayMenuActivated"
+QT_MOC_LITERAL(12, 200, 33), // "QSystemTrayIcon::ActivationRe..."
+QT_MOC_LITERAL(13, 234, 6) // "reason"
 
     },
     "Unsplash_GUI\0on_Refresh_clicked\0\0"
     "on_Res_changed\0on_Interval_changed\0"
     "on_defaultSave_clicked\0on_changeSave_clicked\0"
-    "on_exit_clicked\0on_About_clicked\0"
+    "on_hide_clicked\0on_About_clicked\0"
+    "on_differentWallpaper_clicked\0state\0"
     "trayMenuActivated\0QSystemTrayIcon::ActivationReason\0"
     "reason"
 };
@@ -58,7 +61,7 @@ static const uint qt_meta_data_Unsplash_GUI[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -66,14 +69,15 @@ static const uint qt_meta_data_Unsplash_GUI[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   54,    2, 0x0a /* Public */,
-       3,    0,   55,    2, 0x0a /* Public */,
-       4,    0,   56,    2, 0x0a /* Public */,
-       5,    0,   57,    2, 0x0a /* Public */,
-       6,    0,   58,    2, 0x0a /* Public */,
-       7,    0,   59,    2, 0x0a /* Public */,
-       8,    0,   60,    2, 0x0a /* Public */,
-       9,    1,   61,    2, 0x08 /* Private */,
+       1,    0,   59,    2, 0x0a /* Public */,
+       3,    0,   60,    2, 0x0a /* Public */,
+       4,    0,   61,    2, 0x0a /* Public */,
+       5,    0,   62,    2, 0x0a /* Public */,
+       6,    0,   63,    2, 0x0a /* Public */,
+       7,    0,   64,    2, 0x0a /* Public */,
+       8,    0,   65,    2, 0x0a /* Public */,
+       9,    1,   66,    2, 0x0a /* Public */,
+      11,    1,   69,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -83,7 +87,8 @@ static const uint qt_meta_data_Unsplash_GUI[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 10,   11,
+    QMetaType::Void, QMetaType::Int,   10,
+    QMetaType::Void, 0x80000000 | 12,   13,
 
        0        // eod
 };
@@ -99,9 +104,10 @@ void Unsplash_GUI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 2: _t->on_Interval_changed(); break;
         case 3: _t->on_defaultSave_clicked(); break;
         case 4: _t->on_changeSave_clicked(); break;
-        case 5: _t->on_exit_clicked(); break;
+        case 5: _t->on_hide_clicked(); break;
         case 6: _t->on_About_clicked(); break;
-        case 7: _t->trayMenuActivated((*reinterpret_cast< QSystemTrayIcon::ActivationReason(*)>(_a[1]))); break;
+        case 7: _t->on_differentWallpaper_clicked((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 8: _t->trayMenuActivated((*reinterpret_cast< QSystemTrayIcon::ActivationReason(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -134,13 +140,13 @@ int Unsplash_GUI::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 9;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 8)
+        if (_id < 9)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 8;
+        _id -= 9;
     }
     return _id;
 }

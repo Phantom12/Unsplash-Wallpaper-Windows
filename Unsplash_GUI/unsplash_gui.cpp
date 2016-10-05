@@ -7,6 +7,7 @@
 #include "aboutdialog.h"
 #include "qmessagebox.h"
 
+//Unless otherwise specified, the constructors of a derived class calls the default constructor of its base classes
 Unsplash_GUI::Unsplash_GUI(QWidget *parent)
 	: QMainWindow(parent)
 {
@@ -18,6 +19,10 @@ Unsplash_GUI::Unsplash_GUI(QWidget *parent)
 	ui.intervalComboBox->setCurrentText("1 hour");
 	ui.saveFolderDisp->setText(picFolderDir.c_str());
 	intervalComboboxLastIdx = ui.intervalComboBox->currentIndex();
+	if (IsWindows8OrGreater()) //consistent with the definition of differentWallpaperPerMonitor in Unsplash_Wei
+		ui.differentWallpaper_checkBox->setCheckState(Qt::Checked);
+	else
+		ui.differentWallpaper_checkBox->setCheckState(Qt::Unchecked);
 	
 	trayObj = new QSystemTrayIcon(this);
 	trayObj->setIcon(icon);
@@ -49,47 +54,57 @@ void Unsplash_GUI::on_Res_changed()
 	const QString resChoice = ui.resComboBox->currentText();
 	if (!resChoice.compare("auto", Qt::CaseInsensitive))
 	{
-		WIDTH = 0; HEIGHT = 0;
+		this->setRes();
 	}
 	else if (!resChoice.compare("1280x720", Qt::CaseInsensitive))
 	{
-		WIDTH = 1280; HEIGHT = 720;
+		//WIDTH = 1280; HEIGHT = 720;
+		this->setRes(1280, 720);
 	}
 	else if (!resChoice.compare("1280x800", Qt::CaseInsensitive))
 	{
-		WIDTH = 1280; HEIGHT = 800;
+		//WIDTH = 1280; HEIGHT = 800;
+		this->setRes(1280, 800);
 	}
 	else if (!resChoice.compare("1440x810", Qt::CaseInsensitive))
 	{
-		WIDTH = 1440; HEIGHT = 810;
+		//WIDTH = 1440; HEIGHT = 810;
+		this->setRes(1440, 810);
 	}
 	else if (!resChoice.compare("1440x900", Qt::CaseInsensitive))
 	{
-		WIDTH = 1440; HEIGHT = 900;
+		//WIDTH = 1440; HEIGHT = 900;
+		this->setRes(1440, 900);
 	}
 	else if (!resChoice.compare("1920x1080", Qt::CaseInsensitive))
 	{
-		WIDTH = 1920; HEIGHT = 1080;
+		//WIDTH = 1920; HEIGHT = 1080;
+		this->setRes(1920, 1080);
 	}
 	else if (!resChoice.compare("1920x1200", Qt::CaseInsensitive))
 	{
-		WIDTH = 1920; HEIGHT = 1200;
+		//WIDTH = 1920; HEIGHT = 1200;
+		this->setRes(1920, 1200);
 	}
 	else if (!resChoice.compare("2560x1440", Qt::CaseInsensitive))
 	{
-		WIDTH = 2560; HEIGHT = 1440;
+		//WIDTH = 2560; HEIGHT = 1440;
+		this->setRes(2560, 1440);
 	}
 	else if (!resChoice.compare("2560x1600", Qt::CaseInsensitive))
 	{
-		WIDTH = 2560; HEIGHT = 1600;
+		//WIDTH = 2560; HEIGHT = 1600;
+		this->setRes(2560, 1600);
 	}
 	else if (!resChoice.compare("3440x1440", Qt::CaseInsensitive))
 	{
-		WIDTH = 3440; HEIGHT = 1440;
+		//WIDTH = 3440; HEIGHT = 1440;
+		this->setRes(3440, 1440);
 	}
 	else if (!resChoice.compare("3840x2160", Qt::CaseInsensitive))
 	{
-		WIDTH = 3840; HEIGHT = 2160;
+		//WIDTH = 3840; HEIGHT = 2160;
+		this->setRes(3840, 2160);
 	}
 	else
 	{
@@ -196,7 +211,7 @@ void Unsplash_GUI::on_changeSave_clicked()
 	}
 }
 
-void Unsplash_GUI::on_exit_clicked()
+void Unsplash_GUI::on_hide_clicked()
 {
 	//this->close();
 	this->hide();
@@ -206,6 +221,28 @@ void Unsplash_GUI::on_About_clicked()
 {
 	aboutDialog aboutWindow(this);
 	aboutWindow.exec();
+}
+
+void Unsplash_GUI::on_differentWallpaper_clicked(int state)
+{
+	if (state == Qt::Checked)
+	{
+		if (!IsWindows8OrGreater())
+		{
+			ui.differentWallpaper_checkBox->setCheckState(Qt::Unchecked);
+			differentWallpaperPerMonitor = false;
+		}
+		else
+			differentWallpaperPerMonitor = true;
+	}
+	else
+	{
+		differentWallpaperPerMonitor = false;
+		/*std::fstream logFileStream;
+		logFileStream.open("log.txt", std::fstream::out | std::fstream::app);
+		logFileStream << "come on! I called differentWallpaperPerMonitor false" << std::endl;
+		logFileStream.close();*/
+	}
 }
 
 void Unsplash_GUI::trayMenuActivated(QSystemTrayIcon::ActivationReason reason)

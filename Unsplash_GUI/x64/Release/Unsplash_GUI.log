@@ -1,5 +1,5 @@
-﻿Build started 3/10/2016 9:59:40 AM.
-     1>Project "E:\Unsplash_GUI\Unsplash_GUI\Unsplash_GUI.vcxproj" on node 2 (Build target(s)).
+﻿Build started 5/10/2016 9:26:32 PM.
+     1>Project "C:\Users\wegu\Desktop\Unsplash_GUI\Unsplash_GUI\Unsplash_GUI.vcxproj" on node 2 (Build target(s)).
      1>CustomBuild:
          Moc'ing unsplash_gui.h...
          Uic'ing unsplash_gui.ui...
@@ -27,7 +27,7 @@
        ResourceCompile:
          C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe /l"0x0409" /nologo /fo"x64\Release\Resource.res" Resource.rc 
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"E:\Unsplash_GUI\x64\Release\\Unsplash_GUI.exe" /NOLOGO /LIBPATH:"C:\Users\wegu\Desktop\Unsplash_GUI\Unsplash_GUI\curl-7.50.3\builds\libcurl-vc12-x64-release-static-ipv6-sspi-winssl\lib" /LIBPATH:C:\Qt\Qt5.7.0\5.7\msvc2013_64\lib libcurl_a.lib qtmain.lib Qt5Core.lib Qt5Gui.lib Qt5Widgets.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:"E:\Unsplash_GUI\x64\Release\Unsplash_GUI.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\Unsplash_GUI\x64\Release\Unsplash_GUI.lib" /MACHINE:X64 x64\Release\Resource.res
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\wegu\Desktop\Unsplash_GUI\x64\Release\\Unsplash_GUI.exe" /NOLOGO /LIBPATH:"C:\Users\wegu\Desktop\Unsplash_GUI\Unsplash_GUI\curl-7.50.3\builds\libcurl-vc12-x64-release-static-ipv6-sspi-winssl\lib" /LIBPATH:C:\Qt\Qt5.7.0\5.7\msvc2013_64\lib libcurl_a.lib qtmain.lib Qt5Core.lib Qt5Gui.lib Qt5Widgets.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:"C:\Users\wegu\Desktop\Unsplash_GUI\x64\Release\Unsplash_GUI.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\wegu\Desktop\Unsplash_GUI\x64\Release\Unsplash_GUI.lib" /MACHINE:X64 x64\Release\Resource.res
          x64\Release\aboutdialog.obj
          x64\Release\addcustominterval.obj
          x64\Release\qrc_unsplash_gui.obj
@@ -37,9 +37,9 @@
          x64\Release\main.obj
          x64\Release\unsplash_gui.obj
          x64\Release\Unsplash_Wei.obj
-         Unsplash_GUI.vcxproj -> E:\Unsplash_GUI\x64\Release\Unsplash_GUI.exe
-     1>Done Building Project "E:\Unsplash_GUI\Unsplash_GUI\Unsplash_GUI.vcxproj" (Build target(s)).
+         Unsplash_GUI.vcxproj -> C:\Users\wegu\Desktop\Unsplash_GUI\x64\Release\Unsplash_GUI.exe
+     1>Done Building Project "C:\Users\wegu\Desktop\Unsplash_GUI\Unsplash_GUI\Unsplash_GUI.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:09.08
+Time Elapsed 00:00:08.62

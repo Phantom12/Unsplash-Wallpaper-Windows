@@ -1,13 +1,26 @@
 #include "unsplash_gui.h"
+#include "unsplash_gui_old.h"
 #include <qtwidgets/qapplication>
 #include <iostream>
 #include <thread>
+#include <VersionHelpers.h>
 
 int main(int argc, char *argv[])
 {
-	QApplication a(argc, argv);
-	Unsplash_GUI w;
-	w.show();
-	//w.loopExec(true);
-	return a.exec();
+	if (IsWindows8OrGreater())
+	{
+		QApplication a(argc, argv);
+		Unsplash_GUI w;
+		w.show();
+		//w.loopExec(true);
+		return a.exec();
+	}
+	else
+	{
+		QApplication a(argc, argv);
+		Unsplash_GUI_old w;
+		w.show();
+		//w.loopExec(true);
+		return a.exec();
+	}
 }

@@ -114,10 +114,10 @@ void unsplash::Unsplash_Wei::setURL()
 		sourceURL += "x";
 		sourceURL += std::to_string(GetSystemMetrics(SM_CYSCREEN));
 		
-		std::fstream logFileStream;
+		/*std::fstream logFileStream;
 		logFileStream.open("log.txt", std::fstream::out | std::fstream::app);
 		logFileStream << sourceURL.c_str() << std::endl;
-		logFileStream.close(); 
+		logFileStream.close(); */
 	}
 	else
 	{
@@ -150,10 +150,10 @@ void unsplash::Unsplash_Wei::setURL()
 		sourceURL += "x";
 		sourceURL += std::to_string(lclHeight);
 
-		std::fstream logFileStream;
+		/*std::fstream logFileStream;
 		logFileStream.open("log.txt", std::fstream::out | std::fstream::app);
 		logFileStream << sourceURL.c_str() << std::endl;
-		logFileStream.close();
+		logFileStream.close();*/
 	}
 	
 	//sourceURL = "https://source.unsplash.com/featured/3840x2160";

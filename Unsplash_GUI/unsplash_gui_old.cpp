@@ -6,24 +6,167 @@
 #include <fstream>
 #include "aboutdialog.h"
 #include "qmessagebox.h"
+#include <ShlObj.h>
+#include <Shlwapi.h>
 
 //Unless otherwise specified, the constructors of a derived class calls the default constructor of its base classes
 Unsplash_GUI_old::Unsplash_GUI_old(QWidget *parent)
 	: QMainWindow(parent)
 {
+	QString localSettingFile = getenv("LOCALAPPDATA");
+	localSettingFile += "\\Unsplash_GUI\\config.ini";
+	settings = new QSettings(localSettingFile, QSettings::IniFormat);
 	QIcon icon(":/image/minecart_cropped.ico");
 	this->setWindowIcon(icon);
 
 	ui.setupUi(this);
-	ui.resComboBox->setCurrentText("Auto");
-	ui.intervalComboBox->setCurrentText("1 hour");
-	ui.saveFolderDisp->setText(picFolderDir.c_str());
-	intervalComboboxLastIdx = ui.intervalComboBox->currentIndex();
+	
 	if (IsWindows8OrGreater()) //consistent with the definition of differentWallpaperPerMonitor in Unsplash_Wei_old
 		ui.differentWallpaper_checkBox->setCheckState(Qt::Checked);
 	else
 		ui.differentWallpaper_checkBox->setCheckState(Qt::Unchecked);
-	
+
+	// check if the preferred refresh interval exists
+	QString interval = settings->value("Refresh_Interval").toString();
+	/*std::fstream logFileStream;
+	logFileStream.open("log.txt", std::fstream::out | std::fstream::app);
+	logFileStream << interval.toStdString() << std::endl;
+	logFileStream << interval.compare("2 hour", Qt::CaseInsensitive) << std::endl;
+	logFileStream.close();*/
+	if (interval.isEmpty())
+	{
+		settings->setValue("Refresh_Interval", "1 hour");
+		ui.intervalComboBox->setCurrentText("1 hour");
+	}
+	else
+	{
+		if (!interval.compare("5 min", Qt::CaseInsensitive))
+		{
+			//refreshPeriod = 5 / 60.f;
+			ui.intervalComboBox->setCurrentText("5 min"); // automatically triggered on_Interval_changed()
+		}
+		else if (!interval.compare("10 min", Qt::CaseInsensitive))
+		{
+			//refreshPeriod = 10 / 60.f;
+			ui.intervalComboBox->setCurrentText("10 min");
+		}
+		else if (!interval.compare("15 min", Qt::CaseInsensitive))
+		{
+			//refreshPeriod = 15 / 60.f;
+			ui.intervalComboBox->setCurrentText("15 min");
+		}
+		else if (!interval.compare("30 min", Qt::CaseInsensitive))
+		{
+			//refreshPeriod = 30 / 60.f;
+			ui.intervalComboBox->setCurrentText("30 min");
+		}
+		else if (!interval.compare("1 hour", Qt::CaseInsensitive))
+		{
+			//refreshPeriod = 1.f;
+			ui.intervalComboBox->setCurrentText("1 hour");
+		}
+		else if (!interval.compare("2 hour", Qt::CaseInsensitive))
+		{
+			//refreshPeriod = 2.f;
+			ui.intervalComboBox->setCurrentText("2 hour");
+		}
+		else if (!interval.compare("4 hour", Qt::CaseInsensitive))
+		{
+			//refreshPeriod = 4.f; 
+			ui.intervalComboBox->setCurrentText("4 hour");
+		}
+		else if (!interval.compare("6 hour", Qt::CaseInsensitive))
+		{
+			//refreshPeriod = 6.f;
+			ui.intervalComboBox->setCurrentText("6 hour");
+		}
+		else if (!interval.compare("12 hour", Qt::CaseInsensitive))
+		{
+			//refreshPeriod = 12.f; 
+			ui.intervalComboBox->setCurrentText("12 hour");
+		}
+		else if (!interval.compare("1 day", Qt::CaseInsensitive))
+		{
+			//refreshPeriod = 24.f;
+			ui.intervalComboBox->setCurrentText("1 day");
+		}
+		else if (!interval.right(4).compare("hour", Qt::CaseInsensitive))
+		{
+			//refreshPeriod = interval.left(interval.length() - 4).toFloat();
+			ui.intervalComboBox->addItem(interval);
+			ui.intervalComboBox->setCurrentText(interval);
+			/*std::fstream logFileStream;
+			logFileStream.open("log.txt", std::fstream::out | std::fstream::app);
+			logFileStream << refreshPeriod << std::endl;
+			logFileStream.close();*/
+		}
+		else //unrecognized setting
+		{
+			settings->setValue("Refresh_Interval", "1 hour");
+			ui.intervalComboBox->setCurrentText("1 hour");
+		}
+	}
+	intervalComboboxLastIdx = ui.intervalComboBox->currentIndex();
+
+	// check if the wallpaper save location exists in the config.ini
+	QString saveLoc = settings->value("Save_Location").toString();
+	if (saveLoc.isEmpty())
+	{
+		/*std::fstream logFileStream;
+		logFileStream.open("log.txt", std::fstream::out | std::fstream::app);
+		std::string tempStr = saveLoc.toStdString();
+		logFileStream << tempStr.c_str() << std::endl;
+		logFileStream.close();*/
+		settings->setValue("Save_Location", QString(picFolderDir.c_str()));
+	}
+	else
+		picFolderDir = saveLoc.toStdString();
+	ui.saveFolderDisp->setText(picFolderDir.c_str());
+	//system(("mkdir " + picFolderDir).c_str()); // mkdir only works with backslash
+
+	// check if the preferred resolution settings exist
+	int wallpaperW = settings->value("Width").toInt();
+	int wallpaperH = settings->value("Height").toInt();
+
+	if (wallpaperH*wallpaperW)
+	{
+		//setRes(wallpaperW, wallpaperH);
+		std::string lclResComboBoxText = std::to_string(wallpaperW) + "x" + std::to_string(wallpaperH);
+		ui.resComboBox->setCurrentText(lclResComboBoxText.c_str());
+	}
+	else
+	{
+		ui.resComboBox->setCurrentText("Auto");
+		settings->setValue("Width", 0);
+		settings->setValue("Height", 0);
+	}
+
+	// check if the auto start link exists
+	PWSTR autoStartPath; //wchar string
+	HRESULT hr = CoInitializeEx(NULL, COINIT_APARTMENTTHREADED);
+	hr = SHGetKnownFolderPath(FOLDERID_Startup, 0, NULL, &autoStartPath); //retrive the start up folder direction of the current user
+	if (SUCCEEDED(hr))
+	{
+		WCHAR currentFile[256];
+		GetModuleFileName(NULL, currentFile, 256);
+		std::wstring ShortcutFile(autoStartPath);
+		ShortcutFile += L"\\";
+		ShortcutFile += PathFindFileName(currentFile);
+		ShortcutFile = ShortcutFile.substr(0, ShortcutFile.length() - 3); // remove "exe" from the shortcut name
+		ShortcutFile += L"lnk";
+		std::string ShortcutFileA(ShortcutFile.begin(), ShortcutFile.end());
+		// http://stackoverflow.com/questions/12774207/fastest-way-to-check-if-a-file-exist-using-standard-c-c11-c
+		if (std::FILE* shortcut = fopen(ShortcutFileA.c_str(), "r"))
+		{
+			fclose(shortcut);
+			ui.autoStartCheckBox->setCheckState(Qt::Checked);
+		}
+		else
+			ui.autoStartCheckBox->setCheckState(Qt::Unchecked);
+	}
+	else
+		ui.autoStartCheckBox->setCheckState(Qt::Unchecked);
+
 	trayObj = new QSystemTrayIcon(this);
 	trayObj->setIcon(icon);
 	trayObjMenu = new QMenu(this);
@@ -110,6 +253,18 @@ void Unsplash_GUI_old::on_Res_changed()
 	{
 		return;
 	}
+
+	// update .ini setting file
+	if (!resChoice.compare("auto", Qt::CaseInsensitive))
+	{
+		settings->setValue("Width", 0);
+		settings->setValue("Height", 0);
+	}
+	else
+	{
+		settings->setValue("Width", WIDTH);
+		settings->setValue("Height", HEIGHT);
+	}
 }
 
 void Unsplash_GUI_old::on_Interval_changed()
@@ -183,12 +338,14 @@ void Unsplash_GUI_old::on_Interval_changed()
 			refreshPeriod = extractedFloat;
 	}
 	intervalComboboxLastIdx = ui.intervalComboBox->currentIndex();
+	settings->setValue("Refresh_Interval", ui.intervalComboBox->currentText());
 }
 
 void Unsplash_GUI_old::on_defaultSave_clicked()
 {
 	this->setDefaultSaveLoc();
 	ui.saveFolderDisp->setText(picFolderDir.c_str());
+	settings->setValue("Save_Location", QString(picFolderDir.c_str()));
 }
 
 void Unsplash_GUI_old::on_changeSave_clicked()
@@ -209,6 +366,7 @@ void Unsplash_GUI_old::on_changeSave_clicked()
 		picFolderDir += "/";
 		ui.saveFolderDisp->setText(picFolderDir.c_str());
 	}
+	settings->setValue("Save_Location", QString(picFolderDir.c_str()));
 }
 
 void Unsplash_GUI_old::on_hide_clicked()
@@ -229,6 +387,79 @@ void Unsplash_GUI_old::on_differentWallpaper_clicked(int state)
 	{
 		if (!IsWindows8OrGreater())
 			ui.differentWallpaper_checkBox->setCheckState(Qt::Unchecked);
+	}
+}
+
+//http://stackoverflow.com/questions/15579932/c-how-do-we-make-our-application-start-on-computer-startup-and-of-course-aft
+void Unsplash_GUI_old::on_autoStart_clicked(int state)
+{
+	if (state == Qt::Checked)
+	{
+		PWSTR autoStartPath; //wchar string
+		HRESULT hr = CoInitializeEx(NULL, COINIT_APARTMENTTHREADED);
+
+		hr = SHGetKnownFolderPath(FOLDERID_Startup, 0, NULL, &autoStartPath); //retrive the start up folder direction of the current user
+		
+		if (SUCCEEDED(hr)) // use the shell link to add the program to the autoStart folder
+		{
+			IShellLink* pShellLink = NULL;
+			hr = CoCreateInstance(CLSID_ShellLink, NULL, CLSCTX_INPROC_SERVER, IID_IShellLink, (void**)&pShellLink);
+			if (SUCCEEDED(hr))
+			{
+				IPersistFile* ppf;
+				WCHAR currentFile[256];
+				GetModuleFileName(NULL, currentFile, 256);
+				//pShellLink->SetPath(L"C:\\Users\\wegu\\Desktop\\Unsplash_GUI\\x64\\Release\\Unsplash_GUI.exe");
+				pShellLink->SetPath(currentFile);
+				pShellLink->SetDescription(L"Shortcut to Unsplash Wallpaper");
+				//logFileStream << SUCCEEDED(hr) << std::endl;
+
+				hr = pShellLink->QueryInterface(IID_IPersistFile, (void**)&ppf);
+				if (SUCCEEDED(hr))
+				{
+					std::wstring ShortcutFile(autoStartPath);
+					ShortcutFile += L"\\";
+					ShortcutFile += PathFindFileName(currentFile);
+					ShortcutFile = ShortcutFile.substr(0, ShortcutFile.length() - 3); // remove "exe" from the shortcut name
+					ShortcutFile += L"lnk";
+					//hr = ppf->Save(L"C:\\Work\\test.lnk", TRUE);
+					hr = ppf->Save(ShortcutFile.c_str(), TRUE);
+					ppf->Release();
+					if (FAILED(hr))
+						ui.autoStartCheckBox->setCheckState(Qt::Unchecked);
+				}
+				else
+					ui.autoStartCheckBox->setCheckState(Qt::Unchecked);
+			}
+			else
+				ui.autoStartCheckBox->setCheckState(Qt::Unchecked);
+
+			pShellLink->Release();
+		}
+		else
+			ui.autoStartCheckBox->setCheckState(Qt::Unchecked);
+
+	} // if checked
+	else // delete the shortcut from the startup folder
+	{
+		PWSTR autoStartPath; //wchar string
+		HRESULT hr = CoInitializeEx(NULL, COINIT_APARTMENTTHREADED);
+		hr = SHGetKnownFolderPath(FOLDERID_Startup, 0, NULL, &autoStartPath); //retrive the start up folder direction of the current user
+		if (SUCCEEDED(hr))
+		{
+			WCHAR currentFile[256];
+			GetModuleFileName(NULL, currentFile, 256);
+			std::wstring ShortcutFile(autoStartPath);
+			ShortcutFile += L"\\";
+			ShortcutFile += PathFindFileName(currentFile);
+			ShortcutFile = ShortcutFile.substr(0, ShortcutFile.length() - 3); // remove "exe" from the shortcut name
+			ShortcutFile += L"lnk";
+			std::string ShortcutFileA(ShortcutFile.begin(), ShortcutFile.end());
+			if (remove(ShortcutFileA.c_str()))
+				ui.autoStartCheckBox->setCheckState(Qt::Checked);
+		}
+		else
+			ui.autoStartCheckBox->setCheckState(Qt::Checked);
 	}
 }
 
@@ -271,4 +502,5 @@ Unsplash_GUI_old::~Unsplash_GUI_old()
 	trayObjMenu = NULL;
 	exitAct = NULL;
 	settingAct = NULL;
+	settings = NULL;
 }

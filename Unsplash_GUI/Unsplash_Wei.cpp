@@ -7,6 +7,7 @@
 #include<Windows.h>
 #include<shlobj.h>
 #include<comdef.h>
+#include<QString>
 
 //#pragma comment(lib, "shell32.lib")
 
@@ -93,6 +94,7 @@ void unsplash::Unsplash_Wei::setDefaultSaveLoc()
 	picFolderDir = picFolder;
 	picFolderDir += "\\Unsplash\\";
 	std::string createFolderCMD = "mkdir " + picFolderDir;
+	picFolderDir = QString(picFolderDir.c_str()).replace("\\", "/").toStdString(); //for syntax consistency, use backslash
 	system(createFolderCMD.c_str());
 	//printf("%s", picFolderDir);
 }

@@ -1,38 +1,11 @@
-﻿Build started 6/10/2016 9:22:17 AM.
-     1>Project "C:\Users\wegu\Desktop\Unsplash_GUI\Unsplash_GUI\Unsplash_GUI.vcxproj" on node 2 (Rebuild target(s)).
-     1>CustomBuild:
-         Moc'ing unsplash_gui.h...
-         Uic'ing unsplash_gui.ui...
-         Moc'ing addcustominterval.h...
-         Moc'ing aboutdialog.h...
-         Moc'ing unsplash_gui_old.h...
-         Rcc'ing unsplash_gui.qrc...
-         Uic'ing addcustominterval.ui...
-         Uic'ing aboutdialog.ui...
+﻿Build started 10/12/2016 10:04:18 PM.
+     1>Project "C:\Users\wegu\Desktop\Unsplash_GUI\Unsplash_GUI\Unsplash_GUI.vcxproj" on node 2 (Build target(s)).
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_aboutdialog.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are GeneratedFiles\Debug\moc_aboutdialog.cpp, GeneratedFiles\Release\moc_aboutdialog.cpp.
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_addcustominterval.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are GeneratedFiles\Debug\moc_addcustominterval.cpp, GeneratedFiles\Release\moc_addcustominterval.cpp.
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_unsplash_gui.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are GeneratedFiles\Debug\moc_unsplash_gui.cpp, GeneratedFiles\Release\moc_unsplash_gui.cpp.
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(935,5): warning MSB8027: Two or more files with the name of moc_unsplash_gui_old.cpp will produce outputs to the same location. This can lead to an incorrect build result.  The files involved are GeneratedFiles\Debug\moc_unsplash_gui_old.cpp, GeneratedFiles\Release\moc_unsplash_gui_old.cpp.
-       ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /I"C:\Users\wegu\Desktop\Unsplash_GUI\Unsplash_GUI\curl-7.50.3\builds\libcurl-vc12-x64-release-static-ipv6-sspi-winssl\include\curl" /I.\GeneratedFiles /I. /IC:\Qt\Qt5.7.0\5.7\msvc2013_64\include /I.\GeneratedFiles\Release /IC:\Qt\Qt5.7.0\5.7\msvc2013_64\include\QtCore /IC:\Qt\Qt5.7.0\5.7\msvc2013_64\include\QtGui /IC:\Qt\Qt5.7.0\5.7\msvc2013_64\include\QtWidgets /nologo /W1 /WX- /O2 /D CURL_STATICLIB /D _CRT_SECURE_NO_WARNINGS /D UNICODE /D WIN32 /D WIN64 /D QT_DLL /D QT_NO_DEBUG /D NDEBUG /D QT_CORE_LIB /D QT_GUI_LIB /D QT_WIDGETS_LIB /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /Gd /TP /errorReport:prompt aboutdialog.cpp addcustominterval.cpp GeneratedFiles\Release\moc_aboutdialog.cpp GeneratedFiles\Release\moc_addcustominterval.cpp GeneratedFiles\Release\moc_unsplash_gui.cpp GeneratedFiles\Release\moc_unsplash_gui_old.cpp main.cpp unsplash_gui.cpp unsplash_gui_old.cpp Unsplash_Wei.cpp Unsplash_Wei_old.cpp
-         aboutdialog.cpp
-         addcustominterval.cpp
-         moc_aboutdialog.cpp
-         moc_addcustominterval.cpp
-         moc_unsplash_gui.cpp
-         moc_unsplash_gui_old.cpp
-         main.cpp
-         unsplash_gui.cpp
-         unsplash_gui_old.cpp
-         Unsplash_Wei.cpp
-         Unsplash_Wei_old.cpp
-         Generating Code...
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /I"C:\Users\wegu\Desktop\Unsplash_GUI\Unsplash_GUI\curl-7.50.3\builds\libcurl-vc12-x64-release-static-ipv6-sspi-winssl\include\curl" /I.\GeneratedFiles /I. /IC:\Qt\Qt5.7.0\5.7\msvc2013_64\include /I.\GeneratedFiles\Release /IC:\Qt\Qt5.7.0\5.7\msvc2013_64\include\QtCore /IC:\Qt\Qt5.7.0\5.7\msvc2013_64\include\QtGui /IC:\Qt\Qt5.7.0\5.7\msvc2013_64\include\QtWidgets /nologo /W1 /WX- /O2 /D CURL_STATICLIB /D _CRT_SECURE_NO_WARNINGS /D UNICODE /D WIN32 /D WIN64 /D QT_DLL /D QT_NO_DEBUG /D NDEBUG /D QT_CORE_LIB /D QT_GUI_LIB /D QT_WIDGETS_LIB /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /Gd /TP /errorReport:prompt GeneratedFiles\qrc_unsplash_gui.cpp
-         qrc_unsplash_gui.cpp
-       ResourceCompile:
-         C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe /l"0x0409" /nologo /fo"x64\Release\Resource.res" Resource.rc 
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\wegu\Desktop\Unsplash_GUI\x64\Release\\Unsplash_GUI.exe" /NOLOGO /LIBPATH:"C:\Users\wegu\Desktop\Unsplash_GUI\Unsplash_GUI\curl-7.50.3\builds\libcurl-vc12-x64-release-static-ipv6-sspi-winssl\lib" /LIBPATH:C:\Qt\Qt5.7.0\5.7\msvc2013_64\lib libcurl_a.lib qtmain.lib Qt5Core.lib Qt5Gui.lib Qt5Widgets.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:"C:\Users\wegu\Desktop\Unsplash_GUI\x64\Release\Unsplash_GUI.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\wegu\Desktop\Unsplash_GUI\x64\Release\Unsplash_GUI.lib" /MACHINE:X64 x64\Release\Resource.res
+     1>Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\wegu\Desktop\Unsplash_GUI\x64\Release\\Unsplash_GUI.exe" /NOLOGO /LIBPATH:"C:\Users\wegu\Desktop\Unsplash_GUI\Unsplash_GUI\curl-7.50.3\builds\libcurl-vc12-x64-release-static-ipv6-sspi-winssl\lib" /LIBPATH:C:\Qt\Qt5.7.0\5.7\msvc2013_64\lib libcurl_a.lib qtmain.lib Qt5Core.lib Qt5Gui.lib Qt5Widgets.lib Shlwapi.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:"C:\Users\wegu\Desktop\Unsplash_GUI\x64\Release\Unsplash_GUI.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\wegu\Desktop\Unsplash_GUI\x64\Release\Unsplash_GUI.lib" /MACHINE:X64 x64\Release\Resource.res
          x64\Release\aboutdialog.obj
          x64\Release\addcustominterval.obj
          x64\Release\qrc_unsplash_gui.obj
@@ -46,8 +19,8 @@
          x64\Release\Unsplash_Wei.obj
          x64\Release\Unsplash_Wei_old.obj
          Unsplash_GUI.vcxproj -> C:\Users\wegu\Desktop\Unsplash_GUI\x64\Release\Unsplash_GUI.exe
-     1>Done Building Project "C:\Users\wegu\Desktop\Unsplash_GUI\Unsplash_GUI\Unsplash_GUI.vcxproj" (Rebuild target(s)).
+     1>Done Building Project "C:\Users\wegu\Desktop\Unsplash_GUI\Unsplash_GUI\Unsplash_GUI.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:12.07
+Time Elapsed 00:00:00.45

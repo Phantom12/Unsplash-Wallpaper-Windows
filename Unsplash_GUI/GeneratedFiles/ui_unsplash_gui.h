@@ -34,7 +34,6 @@ class Ui_Unsplash_GUIClass
 {
 public:
     QWidget *centralWidget;
-    QGridLayout *gridLayout_2;
     QGridLayout *gridLayout;
     QHBoxLayout *horizontalLayout;
     QLabel *refreshLabel;
@@ -53,6 +52,11 @@ public:
     QSpacerItem *horizontalSpacer_8;
     QCheckBox *differentWallpaper_checkBox;
     QSpacerItem *verticalSpacer_2;
+    QHBoxLayout *horizontalLayout_6;
+    QLabel *label;
+    QSpacerItem *horizontalSpacer_9;
+    QCheckBox *autoStartCheckBox;
+    QSpacerItem *verticalSpacer_5;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_3;
     QLabel *saveLabel;
@@ -77,15 +81,12 @@ public:
     {
         if (Unsplash_GUIClass->objectName().isEmpty())
             Unsplash_GUIClass->setObjectName(QStringLiteral("Unsplash_GUIClass"));
-        Unsplash_GUIClass->resize(600, 400);
+        Unsplash_GUIClass->resize(621, 458);
         centralWidget = new QWidget(Unsplash_GUIClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        gridLayout_2 = new QGridLayout(centralWidget);
-        gridLayout_2->setSpacing(6);
-        gridLayout_2->setContentsMargins(11, 11, 11, 11);
-        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
-        gridLayout = new QGridLayout();
+        gridLayout = new QGridLayout(centralWidget);
         gridLayout->setSpacing(6);
+        gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
@@ -113,7 +114,7 @@ public:
 
         gridLayout->addLayout(horizontalLayout, 0, 0, 1, 1);
 
-        verticalSpacer = new QSpacerItem(461, 15, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer = new QSpacerItem(577, 18, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         gridLayout->addItem(verticalSpacer, 1, 0, 1, 1);
 
@@ -139,7 +140,7 @@ public:
 
         gridLayout->addLayout(horizontalLayout_2, 2, 0, 1, 1);
 
-        verticalSpacer_4 = new QSpacerItem(20, 15, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_4 = new QSpacerItem(577, 19, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         gridLayout->addItem(verticalSpacer_4, 3, 0, 1, 1);
 
@@ -179,9 +180,35 @@ public:
 
         gridLayout->addLayout(horizontalLayout_5, 4, 0, 1, 1);
 
-        verticalSpacer_2 = new QSpacerItem(461, 15, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_2 = new QSpacerItem(577, 18, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         gridLayout->addItem(verticalSpacer_2, 5, 0, 1, 1);
+
+        horizontalLayout_6 = new QHBoxLayout();
+        horizontalLayout_6->setSpacing(6);
+        horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
+        label = new QLabel(centralWidget);
+        label->setObjectName(QStringLiteral("label"));
+        label->setFont(font);
+
+        horizontalLayout_6->addWidget(label);
+
+        horizontalSpacer_9 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_6->addItem(horizontalSpacer_9);
+
+        autoStartCheckBox = new QCheckBox(centralWidget);
+        autoStartCheckBox->setObjectName(QStringLiteral("autoStartCheckBox"));
+        autoStartCheckBox->setFont(font);
+
+        horizontalLayout_6->addWidget(autoStartCheckBox);
+
+
+        gridLayout->addLayout(horizontalLayout_6, 6, 0, 1, 1);
+
+        verticalSpacer_5 = new QSpacerItem(20, 18, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout->addItem(verticalSpacer_5, 7, 0, 1, 1);
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
@@ -220,11 +247,11 @@ public:
         verticalLayout->addWidget(saveFolderDisp);
 
 
-        gridLayout->addLayout(verticalLayout, 6, 0, 1, 1);
+        gridLayout->addLayout(verticalLayout, 8, 0, 1, 1);
 
-        verticalSpacer_3 = new QSpacerItem(20, 78, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_3 = new QSpacerItem(577, 48, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        gridLayout->addItem(verticalSpacer_3, 7, 0, 1, 1);
+        gridLayout->addItem(verticalSpacer_3, 9, 0, 1, 1);
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setSpacing(6);
@@ -261,15 +288,12 @@ public:
         horizontalLayout_4->addItem(horizontalSpacer_3);
 
 
-        gridLayout->addLayout(horizontalLayout_4, 8, 0, 1, 1);
-
-
-        gridLayout_2->addLayout(gridLayout, 0, 0, 1, 1);
+        gridLayout->addLayout(horizontalLayout_4, 10, 0, 1, 1);
 
         Unsplash_GUIClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(Unsplash_GUIClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 600, 21));
+        menuBar->setGeometry(QRect(0, 0, 621, 21));
         Unsplash_GUIClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(Unsplash_GUIClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -287,6 +311,7 @@ public:
         QObject::connect(changeFolderButton, SIGNAL(clicked()), Unsplash_GUIClass, SLOT(on_changeSave_clicked()));
         QObject::connect(exitButton, SIGNAL(clicked()), Unsplash_GUIClass, SLOT(on_hide_clicked()));
         QObject::connect(differentWallpaper_checkBox, SIGNAL(stateChanged(int)), Unsplash_GUIClass, SLOT(on_differentWallpaper_clicked(int)));
+        QObject::connect(autoStartCheckBox, SIGNAL(stateChanged(int)), Unsplash_GUIClass, SLOT(on_autoStart_clicked(int)));
 
         QMetaObject::connectSlotsByName(Unsplash_GUIClass);
     } // setupUi
@@ -328,6 +353,8 @@ public:
         DifferentWallpapers_label->setText(QApplication::translate("Unsplash_GUIClass", "Different Wallpapers on different monitors", 0));
         DifferentWallpapers_label_2->setText(QApplication::translate("Unsplash_GUIClass", "(minimum support: Windows 8)", 0));
         differentWallpaper_checkBox->setText(QApplication::translate("Unsplash_GUIClass", "Enable", 0));
+        label->setText(QApplication::translate("Unsplash_GUIClass", "Auto start at system startup", 0));
+        autoStartCheckBox->setText(QApplication::translate("Unsplash_GUIClass", "Enable", 0));
         saveLabel->setText(QApplication::translate("Unsplash_GUIClass", "Folder for saved wallpapers", 0));
         defaultSaveButton->setText(QApplication::translate("Unsplash_GUIClass", "Default", 0));
         changeFolderButton->setText(QApplication::translate("Unsplash_GUIClass", "Change", 0));

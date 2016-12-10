@@ -20,7 +20,7 @@ namespace unsplash
 		std::string tempImgDir; // temp image filename
 		std::string picFolderDir; // image folder in which the liked wallpapers will be saved
 		float refreshPeriod; // the wallpaper refresh interval, in hours
-		int minMsec; // determine the minimal response time of the program, affects the resources hungry level
+		int minMsec; // determine the minimal response time of the program, affects the resource hungry level
 		int WIDTH, HEIGHT; // the width and height of the of the screen resolution
 		std::atomic<bool> manualRefresh = false;  //https://www.classes.cs.uchicago.edu/archive/2013/spring/12300-1/labs/lab6/
 		IDesktopWallpaper* pDesktopWallpaper = NULL; //newer version of functionality that allows finer control of setting wallpapers 

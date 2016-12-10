@@ -6,6 +6,7 @@
 #include<iostream>
 #include<Windows.h>
 #include<shlobj.h>
+#include<QString>
 
 //#pragma comment(lib, "shell32.lib")
 
@@ -86,8 +87,13 @@ void unsplash::Unsplash_Wei_old::setDefaultSaveLoc()
 	char picFolder[256];
 	SHGetFolderPathA(NULL, CSIDL_MYPICTURES, NULL, SHGFP_TYPE_CURRENT, picFolder);
 	picFolderDir = picFolder;
+	/*std::fstream logFileStream;
+	logFileStream.open("log.txt", std::fstream::out);
+	logFileStream << picFolderDir << std::endl;
+	logFileStream.close();*/
 	picFolderDir += "\\Unsplash\\";
 	std::string createFolderCMD = "mkdir " + picFolderDir;
+	picFolderDir = QString(picFolderDir.c_str()).replace("\\", "/").toStdString(); //for syntax consistency, use backslash
 	system(createFolderCMD.c_str());
 	//printf("%s", picFolderDir);
 }

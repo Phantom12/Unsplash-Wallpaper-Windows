@@ -8,6 +8,7 @@
 #include "qsystemtrayicon.h"
 #include <QtGui\QCloseEvent>
 #include <VersionHelpers.h>
+#include <QtCore\QSettings>
 
 class Unsplash_GUI : public QMainWindow, public unsplash::Unsplash_Wei
 {
@@ -26,6 +27,7 @@ public slots:
 	void on_hide_clicked();
 	void on_About_clicked();
 	void on_differentWallpaper_clicked(int state);
+	void on_autoStart_clicked(int state);
 
 //protected:
 //	void closeEvent(QCloseEvent* e); //overwrite the close button to minimize the window instead
@@ -38,6 +40,8 @@ private:
 	QMenu* trayObjMenu;
 	QAction* exitAct;
 	QAction* settingAct;
+	QSettings* settings; //http://stackoverflow.com/questions/10936009/c-data-member-initializer-is-not-allowed
+	
 
 private slots:
 	void trayMenuActivated(QSystemTrayIcon::ActivationReason reason);

@@ -8,6 +8,7 @@
 #include "qsystemtrayicon.h"
 #include <QtGui\QCloseEvent>
 #include <VersionHelpers.h>
+#include <QtCore\QSettings>
 
 class Unsplash_GUI_old : public QMainWindow, public unsplash::Unsplash_Wei_old
 {
@@ -26,6 +27,7 @@ public slots:
 	void on_hide_clicked();
 	void on_About_clicked();
 	void on_differentWallpaper_clicked(int state);
+	void on_autoStart_clicked(int state);
 
 //protected:
 //	void closeEvent(QCloseEvent* e); //overwrite the close button to minimize the window instead
@@ -38,6 +40,7 @@ private:
 	QMenu* trayObjMenu;
 	QAction* exitAct;
 	QAction* settingAct;
+	QSettings* settings;
 
 private slots:
 	void trayMenuActivated(QSystemTrayIcon::ActivationReason reason);

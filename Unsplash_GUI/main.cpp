@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 	{
 		QApplication a(argc, argv);
 		Unsplash_GUI w;
-		w.show();
+		w.hide();
 		//w.loopExec(true);
 		return a.exec();
 	}
@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 	{
 		QApplication a(argc, argv);
 		Unsplash_GUI_old w;
-		w.show();
+		w.hide();
 		//w.loopExec(true);
 		return a.exec();
 	}

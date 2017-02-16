@@ -252,6 +252,7 @@ void unsplash::Unsplash_Wei::loopExec(bool enableKeystroke)
 	memset(monitorID, 0, 256);
 	//UINT32 monitorIdx = 0;
 	UINT32 totalMonitor = 0;
+	RECT displayRect;
 
 	float refreshMsec, retryMsec, waitMsec;
 	if (enableKeystroke)
@@ -293,6 +294,16 @@ void unsplash::Unsplash_Wei::loopExec(bool enableKeystroke)
 					monitorID[0] = L"\0"; // refresh all the monitors with the same wallpaper
 					//return;
 				}
+				else
+				{
+					pDesktopWallpaper->GetMonitorRECT(*monitorID, &displayRect);
+					if ((displayRect.bottom - displayRect.top)*(displayRect.right - displayRect.left)==0) //detect possible detached monitors
+					{
+						monitorIdx++;
+						continue;
+					}
+				}
+
 			} // end of if (differentWallpaperPerMonitor)
 			else
 				monitorID[0] = L"\0";
@@ -352,9 +363,18 @@ void unsplash::Unsplash_Wei::loopExec(bool enableKeystroke)
 				hrInitilize = pDesktopWallpaper->GetMonitorDevicePathAt(monitorIdx, monitorID);
 				if (FAILED(hrInitilize))
 				{
-					printf("get monitor number failed\n");
+					printf("get monitor ID failed\n");
 					monitorID[0] = L"\0";
 					//return;
+				}
+				else
+				{
+					pDesktopWallpaper->GetMonitorRECT(*monitorID, &displayRect);
+					if ((displayRect.bottom - displayRect.top)*(displayRect.right - displayRect.left)==0)
+					{
+						monitorIdx++;
+						continue;
+					}
 				}
 			} //end of if (differentWallpaperPerMonitor)
 			else

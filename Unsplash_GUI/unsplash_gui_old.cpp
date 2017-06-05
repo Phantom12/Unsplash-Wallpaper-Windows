@@ -20,6 +20,7 @@ Unsplash_GUI_old::Unsplash_GUI_old(QWidget *parent)
 	this->setWindowIcon(icon);
 
 	ui.setupUi(this);
+	ui.mainToolBar->hide();
 	
 	if (IsWindows8OrGreater()) //consistent with the definition of differentWallpaperPerMonitor in Unsplash_Wei_old
 		ui.differentWallpaper_checkBox->setCheckState(Qt::Checked);

@@ -21,6 +21,7 @@ Unsplash_GUI::Unsplash_GUI(QWidget *parent)
 	this->setWindowIcon(icon);
 
 	ui.setupUi(this);
+	ui.mainToolBar->hide();
 
 	//check if different per monitor option is specified in the config.ini
 	QVariant perMonitor= settings->value("Different_Per_Monitor");

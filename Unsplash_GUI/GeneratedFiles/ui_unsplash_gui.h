@@ -94,6 +94,7 @@ public:
         refreshLabel = new QLabel(centralWidget);
         refreshLabel->setObjectName(QStringLiteral("refreshLabel"));
         QFont font;
+        font.setFamily(QStringLiteral("Segoe UI"));
         font.setPointSize(12);
         refreshLabel->setFont(font);
 
@@ -107,6 +108,9 @@ public:
         intervalComboBox->setObjectName(QStringLiteral("intervalComboBox"));
         intervalComboBox->setEnabled(true);
         intervalComboBox->setMinimumSize(QSize(80, 20));
+        QFont font1;
+        font1.setFamily(QStringLiteral("Segoe UI"));
+        intervalComboBox->setFont(font1);
         intervalComboBox->setEditable(false);
 
         horizontalLayout->addWidget(intervalComboBox);
@@ -134,6 +138,7 @@ public:
         resComboBox = new QComboBox(centralWidget);
         resComboBox->setObjectName(QStringLiteral("resComboBox"));
         resComboBox->setMinimumSize(QSize(80, 20));
+        resComboBox->setFont(font1);
 
         horizontalLayout_2->addWidget(resComboBox);
 
@@ -158,9 +163,10 @@ public:
 
         DifferentWallpapers_label_2 = new QLabel(centralWidget);
         DifferentWallpapers_label_2->setObjectName(QStringLiteral("DifferentWallpapers_label_2"));
-        QFont font1;
-        font1.setPointSize(10);
-        DifferentWallpapers_label_2->setFont(font1);
+        QFont font2;
+        font2.setFamily(QStringLiteral("Segoe UI"));
+        font2.setPointSize(10);
+        DifferentWallpapers_label_2->setFont(font2);
 
         verticalLayout_2->addWidget(DifferentWallpapers_label_2);
 
@@ -228,12 +234,14 @@ public:
 
         defaultSaveButton = new QPushButton(centralWidget);
         defaultSaveButton->setObjectName(QStringLiteral("defaultSaveButton"));
+        defaultSaveButton->setFont(font1);
 
         horizontalLayout_3->addWidget(defaultSaveButton);
 
         changeFolderButton = new QPushButton(centralWidget);
         changeFolderButton->setObjectName(QStringLiteral("changeFolderButton"));
         changeFolderButton->setEnabled(true);
+        changeFolderButton->setFont(font1);
 
         horizontalLayout_3->addWidget(changeFolderButton);
 
@@ -242,7 +250,9 @@ public:
 
         saveFolderDisp = new QLabel(centralWidget);
         saveFolderDisp->setObjectName(QStringLiteral("saveFolderDisp"));
-        saveFolderDisp->setFont(font);
+        QFont font3;
+        font3.setPointSize(12);
+        saveFolderDisp->setFont(font3);
 
         verticalLayout->addWidget(saveFolderDisp);
 
@@ -262,6 +272,7 @@ public:
 
         aboutButton = new QPushButton(centralWidget);
         aboutButton->setObjectName(QStringLiteral("aboutButton"));
+        aboutButton->setFont(font1);
 
         horizontalLayout_4->addWidget(aboutButton);
 
@@ -271,6 +282,7 @@ public:
 
         refreshButton = new QPushButton(centralWidget);
         refreshButton->setObjectName(QStringLiteral("refreshButton"));
+        refreshButton->setFont(font1);
 
         horizontalLayout_4->addWidget(refreshButton);
 
@@ -280,6 +292,7 @@ public:
 
         exitButton = new QPushButton(centralWidget);
         exitButton->setObjectName(QStringLiteral("exitButton"));
+        exitButton->setFont(font1);
 
         horizontalLayout_4->addWidget(exitButton);
 

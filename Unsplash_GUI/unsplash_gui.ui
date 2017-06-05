@@ -21,6 +21,7 @@
        <widget class="QLabel" name="refreshLabel">
         <property name="font">
          <font>
+          <family>Segoe UI</family>
           <pointsize>12</pointsize>
          </font>
         </property>
@@ -52,6 +53,11 @@
           <width>80</width>
           <height>20</height>
          </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Segoe UI</family>
+         </font>
         </property>
         <property name="editable">
          <bool>false</bool>
@@ -137,6 +143,7 @@
        <widget class="QLabel" name="resLabel">
         <property name="font">
          <font>
+          <family>Segoe UI</family>
           <pointsize>12</pointsize>
          </font>
         </property>
@@ -165,6 +172,11 @@
           <width>80</width>
           <height>20</height>
          </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Segoe UI</family>
+         </font>
         </property>
         <item>
          <property name="text">
@@ -246,6 +258,7 @@
          <widget class="QLabel" name="DifferentWallpapers_label">
           <property name="font">
            <font>
+            <family>Segoe UI</family>
             <pointsize>12</pointsize>
            </font>
           </property>
@@ -258,6 +271,7 @@
          <widget class="QLabel" name="DifferentWallpapers_label_2">
           <property name="font">
            <font>
+            <family>Segoe UI</family>
             <pointsize>10</pointsize>
            </font>
           </property>
@@ -285,6 +299,7 @@
        <widget class="QCheckBox" name="differentWallpaper_checkBox">
         <property name="font">
          <font>
+          <family>Segoe UI</family>
           <pointsize>12</pointsize>
          </font>
         </property>
@@ -314,6 +329,7 @@
        <widget class="QLabel" name="label">
         <property name="font">
          <font>
+          <family>Segoe UI</family>
           <pointsize>12</pointsize>
          </font>
         </property>
@@ -339,6 +355,7 @@
        <widget class="QCheckBox" name="autoStartCheckBox">
         <property name="font">
          <font>
+          <family>Segoe UI</family>
           <pointsize>12</pointsize>
          </font>
         </property>
@@ -370,6 +387,7 @@
          <widget class="QLabel" name="saveLabel">
           <property name="font">
            <font>
+            <family>Segoe UI</family>
             <pointsize>12</pointsize>
            </font>
           </property>
@@ -393,6 +411,11 @@
         </item>
         <item>
          <widget class="QPushButton" name="defaultSaveButton">
+          <property name="font">
+           <font>
+            <family>Segoe UI</family>
+           </font>
+          </property>
           <property name="text">
            <string>Default</string>
           </property>
@@ -402,6 +425,11 @@
          <widget class="QPushButton" name="changeFolderButton">
           <property name="enabled">
            <bool>true</bool>
+          </property>
+          <property name="font">
+           <font>
+            <family>Segoe UI</family>
+           </font>
           </property>
           <property name="text">
            <string>Change</string>
@@ -454,6 +482,11 @@
       </item>
       <item>
        <widget class="QPushButton" name="aboutButton">
+        <property name="font">
+         <font>
+          <family>Segoe UI</family>
+         </font>
+        </property>
         <property name="text">
          <string>About</string>
         </property>
@@ -474,6 +507,11 @@
       </item>
       <item>
        <widget class="QPushButton" name="refreshButton">
+        <property name="font">
+         <font>
+          <family>Segoe UI</family>
+         </font>
+        </property>
         <property name="text">
          <string>Refresh now</string>
         </property>
@@ -494,6 +532,11 @@
       </item>
       <item>
        <widget class="QPushButton" name="exitButton">
+        <property name="font">
+         <font>
+          <family>Segoe UI</family>
+         </font>
+        </property>
         <property name="text">
          <string>Hide</string>
         </property>

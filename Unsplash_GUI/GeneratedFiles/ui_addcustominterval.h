@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'addcustominterval.ui'
 **
-** Created by: Qt User Interface Compiler version 5.7.0
+** Created by: Qt User Interface Compiler version 5.11.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,13 +10,10 @@
 #define UI_ADDCUSTOMINTERVAL_H
 
 #include <QtCore/QVariant>
-#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
@@ -109,10 +106,10 @@ public:
 
     void retranslateUi(QDialog *addCustomInterval)
     {
-        addCustomInterval->setWindowTitle(QApplication::translate("addCustomInterval", "addCustomInterval", 0));
-        label->setText(QApplication::translate("addCustomInterval", "hour", 0));
-        cancelButton->setText(QApplication::translate("addCustomInterval", "Cancel", 0));
-        okButton->setText(QApplication::translate("addCustomInterval", "OK", 0));
+        addCustomInterval->setWindowTitle(QApplication::translate("addCustomInterval", "addCustomInterval", nullptr));
+        label->setText(QApplication::translate("addCustomInterval", "hour", nullptr));
+        cancelButton->setText(QApplication::translate("addCustomInterval", "Cancel", nullptr));
+        okButton->setText(QApplication::translate("addCustomInterval", "OK", nullptr));
     } // retranslateUi
 
 };

@@ -23,7 +23,10 @@ unsplash::Unsplash_Wei_old::Unsplash_Wei_old()
 	logFileStream.close();*/
 	tempImgDir = tempFolder;
 	tempImgDir += "UnsplashTemp.jpg";
-	
+
+	//default sourceURL
+	sourceURL = "https://source.unsplash.com/random/";
+
 	//default auto refresh interval
 	refreshPeriod = 1.f;
 	
@@ -52,6 +55,9 @@ unsplash::Unsplash_Wei_old::Unsplash_Wei_old(float interval, std::string saveLoc
 	logFileStream.close();*/
 	tempImgDir = tempFolder;
 	tempImgDir += "UnsplashTemp.jpg";
+
+	//default sourceURL
+	sourceURL = "https://source.unsplash.com/random/";
 
 	//default auto refresh interval
 	refreshPeriod = interval;
@@ -101,14 +107,15 @@ void unsplash::Unsplash_Wei_old::setDefaultSaveLoc()
 void unsplash::Unsplash_Wei_old::setURL()
 {
 	//printf("%d\n", GetSystemMetrics(SM_CXSCREEN));
-	sourceURL = "https://source.unsplash.com/featured/";
+	//sourceURL = "https://source.unsplash.com/featured/";
+	imgURL = sourceURL;
 
-	sourceURL += std::to_string(WIDTH);
-	sourceURL += "x";
-	sourceURL += std::to_string(HEIGHT);
+	imgURL += std::to_string(WIDTH);
+	imgURL += "x";
+	imgURL += std::to_string(HEIGHT);
 	//sourceURL = "https://source.unsplash.com/featured/3840x2160";
 	//printf("%s", sourceURL.c_str()); // not recommended
-	std::cout << sourceURL << std::endl;
+	//std::cout << sourceURL << std::endl;
 }
 
 int unsplash::Unsplash_Wei_old::getIMG()
@@ -123,7 +130,7 @@ int unsplash::Unsplash_Wei_old::getIMG()
 
 	curlIMG = curl_easy_init();
 
-	curl_easy_setopt(curlIMG, CURLOPT_URL, sourceURL.c_str());
+	curl_easy_setopt(curlIMG, CURLOPT_URL, imgURL.c_str());
 	curl_easy_setopt(curlIMG, CURLOPT_WRITEDATA, tempIMG);
 	//curl_easy_setopt(curlIMG, CURLOPT_WRITEFUNCTION, NULL);
 	curl_easy_setopt(curlIMG, CURLOPT_FOLLOWLOCATION, 1);

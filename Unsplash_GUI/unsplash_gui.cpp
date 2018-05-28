@@ -160,6 +160,20 @@ Unsplash_GUI::Unsplash_GUI(QWidget *parent)
 		settings->setValue("Width", 0);
 		settings->setValue("Height", 0);
 	}
+
+	// check if the preferred sourceURL settings exist
+	QString usrURL = settings->value("sourceURL").toString();
+	if (saveLoc.isEmpty())
+	{
+		/*std::fstream logFileStream;
+		logFileStream.open("log.txt", std::fstream::out | std::fstream::app);
+		std::string tempStr = saveLoc.toStdString();
+		logFileStream << tempStr.c_str() << std::endl;
+		logFileStream.close();*/
+		settings->setValue("sourceURL", QString(sourceURL.c_str()));
+	}
+	else
+		sourceURL = usrURL.toStdString();
 	
 	// check if the auto start link exists
 	PWSTR autoStartPath; //wchar string

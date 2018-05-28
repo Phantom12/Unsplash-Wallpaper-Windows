@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'aboutdialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.7.0
+** Created by: Qt User Interface Compiler version 5.11.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,12 +10,9 @@
 #define UI_ABOUTDIALOG_H
 
 #include <QtCore/QVariant>
-#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QGridLayout>
-#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QVBoxLayout>
 
@@ -73,10 +70,10 @@ public:
 
     void retranslateUi(QDialog *aboutDialog)
     {
-        aboutDialog->setWindowTitle(QApplication::translate("aboutDialog", "aboutDialog", 0));
-        label->setText(QApplication::translate("aboutDialog", "Wallpaper source: https://source.unsplash.com/", 0));
-        label_2->setText(QApplication::translate("aboutDialog", "Press \"Ctrl\" + \"Alt\" + \"N\" for manual refresh", 0));
-        label_3->setText(QApplication::translate("aboutDialog", "Press \"Ctrl\" + \"Alt\" + \"S\" to save current wallaper", 0));
+        aboutDialog->setWindowTitle(QApplication::translate("aboutDialog", "aboutDialog", nullptr));
+        label->setText(QApplication::translate("aboutDialog", "Wallpaper source: https://source.unsplash.com/", nullptr));
+        label_2->setText(QApplication::translate("aboutDialog", "Press \"Ctrl\" + \"Alt\" + \"N\" for manual refresh", nullptr));
+        label_3->setText(QApplication::translate("aboutDialog", "Press \"Ctrl\" + \"Alt\" + \"S\" to save current wallaper", nullptr));
     } // retranslateUi
 
 };

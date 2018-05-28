@@ -1,13 +1,13 @@
 /****************************************************************************
 ** Resource object code
 **
-** Created by: The Resource Compiler for Qt version 5.7.0
+** Created by: The Resource Compiler for Qt version 5.11.0
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
 static const unsigned char qt_resource_data[] = {
-  // C:/Users/wegu/Desktop/Unsplash_GUI/Unsplash_GUI/minecart_cropped.ico
+  // C:/Users/Imp/Desktop/Unsplash-Wallpaper-Windows/Unsplash_GUI/minecart_cropped.ico
   0x0,0x4,0x20,0x3e,
   0x0,
   0x0,0x1,0x0,0x1,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x20,0x0,0x28,0x20,0x4,
@@ -16931,10 +16931,13 @@ static const unsigned char qt_resource_name[] = {
 static const unsigned char qt_resource_struct[] = {
   // :
   0x0,0x0,0x0,0x0,0x0,0x2,0x0,0x0,0x0,0x1,0x0,0x0,0x0,0x1,
+0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,
   // :/image
   0x0,0x0,0x0,0x0,0x0,0x2,0x0,0x0,0x0,0x1,0x0,0x0,0x0,0x2,
+0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,
   // :/image/minecart_cropped.ico
   0x0,0x0,0x0,0x10,0x0,0x0,0x0,0x0,0x0,0x1,0x0,0x0,0x0,0x0,
+0x0,0x0,0x1,0x5d,0x83,0x65,0x44,0x86,
 
 };
 
@@ -16966,7 +16969,7 @@ int QT_RCC_MANGLE_NAMESPACE(qInitResources_unsplash_gui)();
 int QT_RCC_MANGLE_NAMESPACE(qInitResources_unsplash_gui)()
 {
     QT_RCC_PREPEND_NAMESPACE(qRegisterResourceData)
-        (0x01, qt_resource_struct, qt_resource_name, qt_resource_data);
+        (0x2, qt_resource_struct, qt_resource_name, qt_resource_data);
     return 1;
 }
 
@@ -16974,7 +16977,7 @@ int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_unsplash_gui)();
 int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_unsplash_gui)()
 {
     QT_RCC_PREPEND_NAMESPACE(qUnregisterResourceData)
-       (0x01, qt_resource_struct, qt_resource_name, qt_resource_data);
+       (0x2, qt_resource_struct, qt_resource_name, qt_resource_data);
     return 1;
 }
 

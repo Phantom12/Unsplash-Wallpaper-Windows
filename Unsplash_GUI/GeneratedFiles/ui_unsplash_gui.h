@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'unsplash_gui.ui'
 **
-** Created by: Qt User Interface Compiler version 5.7.0
+** Created by: Qt User Interface Compiler version 5.11.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,14 +10,11 @@
 #define UI_UNSPLASH_GUI_H
 
 #include <QtCore/QVariant>
-#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
@@ -105,6 +102,17 @@ public:
         horizontalLayout->addItem(horizontalSpacer_6);
 
         intervalComboBox = new QComboBox(centralWidget);
+        intervalComboBox->addItem(QString());
+        intervalComboBox->addItem(QString());
+        intervalComboBox->addItem(QString());
+        intervalComboBox->addItem(QString());
+        intervalComboBox->addItem(QString());
+        intervalComboBox->addItem(QString());
+        intervalComboBox->addItem(QString());
+        intervalComboBox->addItem(QString());
+        intervalComboBox->addItem(QString());
+        intervalComboBox->addItem(QString());
+        intervalComboBox->addItem(QString());
         intervalComboBox->setObjectName(QStringLiteral("intervalComboBox"));
         intervalComboBox->setEnabled(true);
         intervalComboBox->setMinimumSize(QSize(80, 20));
@@ -136,6 +144,17 @@ public:
         horizontalLayout_2->addItem(horizontalSpacer_5);
 
         resComboBox = new QComboBox(centralWidget);
+        resComboBox->addItem(QString());
+        resComboBox->addItem(QString());
+        resComboBox->addItem(QString());
+        resComboBox->addItem(QString());
+        resComboBox->addItem(QString());
+        resComboBox->addItem(QString());
+        resComboBox->addItem(QString());
+        resComboBox->addItem(QString());
+        resComboBox->addItem(QString());
+        resComboBox->addItem(QString());
+        resComboBox->addItem(QString());
         resComboBox->setObjectName(QStringLiteral("resComboBox"));
         resComboBox->setMinimumSize(QSize(80, 20));
         resComboBox->setFont(font1);
@@ -331,50 +350,46 @@ public:
 
     void retranslateUi(QMainWindow *Unsplash_GUIClass)
     {
-        Unsplash_GUIClass->setWindowTitle(QApplication::translate("Unsplash_GUIClass", "Unsplash_GUI", 0));
-        refreshLabel->setText(QApplication::translate("Unsplash_GUIClass", "Refresh interval (hour)", 0));
-        intervalComboBox->clear();
-        intervalComboBox->insertItems(0, QStringList()
-         << QApplication::translate("Unsplash_GUIClass", "5 min", 0)
-         << QApplication::translate("Unsplash_GUIClass", "10 min", 0)
-         << QApplication::translate("Unsplash_GUIClass", "15 min", 0)
-         << QApplication::translate("Unsplash_GUIClass", "30 min", 0)
-         << QApplication::translate("Unsplash_GUIClass", "1 hour", 0)
-         << QApplication::translate("Unsplash_GUIClass", "2 hour", 0)
-         << QApplication::translate("Unsplash_GUIClass", "4 hour", 0)
-         << QApplication::translate("Unsplash_GUIClass", "6 hour", 0)
-         << QApplication::translate("Unsplash_GUIClass", "12 hour", 0)
-         << QApplication::translate("Unsplash_GUIClass", "1 day", 0)
-         << QApplication::translate("Unsplash_GUIClass", "Custom", 0)
-        );
-        intervalComboBox->setCurrentText(QApplication::translate("Unsplash_GUIClass", "5 min", 0));
-        resLabel->setText(QApplication::translate("Unsplash_GUIClass", "Wallpaper resolution", 0));
-        resComboBox->clear();
-        resComboBox->insertItems(0, QStringList()
-         << QApplication::translate("Unsplash_GUIClass", "Auto", 0)
-         << QApplication::translate("Unsplash_GUIClass", "1280x720", 0)
-         << QApplication::translate("Unsplash_GUIClass", "1280x800", 0)
-         << QApplication::translate("Unsplash_GUIClass", "1440x810", 0)
-         << QApplication::translate("Unsplash_GUIClass", "1440x900", 0)
-         << QApplication::translate("Unsplash_GUIClass", "1920x1080", 0)
-         << QApplication::translate("Unsplash_GUIClass", "1920x1200", 0)
-         << QApplication::translate("Unsplash_GUIClass", "2560x1440", 0)
-         << QApplication::translate("Unsplash_GUIClass", "2560x1600", 0)
-         << QApplication::translate("Unsplash_GUIClass", "3440x1440", 0)
-         << QApplication::translate("Unsplash_GUIClass", "3840x2160", 0)
-        );
-        DifferentWallpapers_label->setText(QApplication::translate("Unsplash_GUIClass", "Different Wallpapers on different monitors", 0));
-        DifferentWallpapers_label_2->setText(QApplication::translate("Unsplash_GUIClass", "(minimum support: Windows 8)", 0));
-        differentWallpaper_checkBox->setText(QApplication::translate("Unsplash_GUIClass", "Enable", 0));
-        label->setText(QApplication::translate("Unsplash_GUIClass", "Auto start at system startup", 0));
-        autoStartCheckBox->setText(QApplication::translate("Unsplash_GUIClass", "Enable", 0));
-        saveLabel->setText(QApplication::translate("Unsplash_GUIClass", "Folder for saved wallpapers", 0));
-        defaultSaveButton->setText(QApplication::translate("Unsplash_GUIClass", "Default", 0));
-        changeFolderButton->setText(QApplication::translate("Unsplash_GUIClass", "Change", 0));
+        Unsplash_GUIClass->setWindowTitle(QApplication::translate("Unsplash_GUIClass", "Unsplash_GUI", nullptr));
+        refreshLabel->setText(QApplication::translate("Unsplash_GUIClass", "Refresh interval (hour)", nullptr));
+        intervalComboBox->setItemText(0, QApplication::translate("Unsplash_GUIClass", "5 min", nullptr));
+        intervalComboBox->setItemText(1, QApplication::translate("Unsplash_GUIClass", "10 min", nullptr));
+        intervalComboBox->setItemText(2, QApplication::translate("Unsplash_GUIClass", "15 min", nullptr));
+        intervalComboBox->setItemText(3, QApplication::translate("Unsplash_GUIClass", "30 min", nullptr));
+        intervalComboBox->setItemText(4, QApplication::translate("Unsplash_GUIClass", "1 hour", nullptr));
+        intervalComboBox->setItemText(5, QApplication::translate("Unsplash_GUIClass", "2 hour", nullptr));
+        intervalComboBox->setItemText(6, QApplication::translate("Unsplash_GUIClass", "4 hour", nullptr));
+        intervalComboBox->setItemText(7, QApplication::translate("Unsplash_GUIClass", "6 hour", nullptr));
+        intervalComboBox->setItemText(8, QApplication::translate("Unsplash_GUIClass", "12 hour", nullptr));
+        intervalComboBox->setItemText(9, QApplication::translate("Unsplash_GUIClass", "1 day", nullptr));
+        intervalComboBox->setItemText(10, QApplication::translate("Unsplash_GUIClass", "Custom", nullptr));
+
+        intervalComboBox->setCurrentText(QApplication::translate("Unsplash_GUIClass", "5 min", nullptr));
+        resLabel->setText(QApplication::translate("Unsplash_GUIClass", "Wallpaper resolution", nullptr));
+        resComboBox->setItemText(0, QApplication::translate("Unsplash_GUIClass", "Auto", nullptr));
+        resComboBox->setItemText(1, QApplication::translate("Unsplash_GUIClass", "1280x720", nullptr));
+        resComboBox->setItemText(2, QApplication::translate("Unsplash_GUIClass", "1280x800", nullptr));
+        resComboBox->setItemText(3, QApplication::translate("Unsplash_GUIClass", "1440x810", nullptr));
+        resComboBox->setItemText(4, QApplication::translate("Unsplash_GUIClass", "1440x900", nullptr));
+        resComboBox->setItemText(5, QApplication::translate("Unsplash_GUIClass", "1920x1080", nullptr));
+        resComboBox->setItemText(6, QApplication::translate("Unsplash_GUIClass", "1920x1200", nullptr));
+        resComboBox->setItemText(7, QApplication::translate("Unsplash_GUIClass", "2560x1440", nullptr));
+        resComboBox->setItemText(8, QApplication::translate("Unsplash_GUIClass", "2560x1600", nullptr));
+        resComboBox->setItemText(9, QApplication::translate("Unsplash_GUIClass", "3440x1440", nullptr));
+        resComboBox->setItemText(10, QApplication::translate("Unsplash_GUIClass", "3840x2160", nullptr));
+
+        DifferentWallpapers_label->setText(QApplication::translate("Unsplash_GUIClass", "Different Wallpapers on different monitors", nullptr));
+        DifferentWallpapers_label_2->setText(QApplication::translate("Unsplash_GUIClass", "(minimum support: Windows 8)", nullptr));
+        differentWallpaper_checkBox->setText(QApplication::translate("Unsplash_GUIClass", "Enable", nullptr));
+        label->setText(QApplication::translate("Unsplash_GUIClass", "Auto start at system startup", nullptr));
+        autoStartCheckBox->setText(QApplication::translate("Unsplash_GUIClass", "Enable", nullptr));
+        saveLabel->setText(QApplication::translate("Unsplash_GUIClass", "Folder for saved wallpapers", nullptr));
+        defaultSaveButton->setText(QApplication::translate("Unsplash_GUIClass", "Default", nullptr));
+        changeFolderButton->setText(QApplication::translate("Unsplash_GUIClass", "Change", nullptr));
         saveFolderDisp->setText(QString());
-        aboutButton->setText(QApplication::translate("Unsplash_GUIClass", "About", 0));
-        refreshButton->setText(QApplication::translate("Unsplash_GUIClass", "Refresh now", 0));
-        exitButton->setText(QApplication::translate("Unsplash_GUIClass", "Hide", 0));
+        aboutButton->setText(QApplication::translate("Unsplash_GUIClass", "About", nullptr));
+        refreshButton->setText(QApplication::translate("Unsplash_GUIClass", "Refresh now", nullptr));
+        exitButton->setText(QApplication::translate("Unsplash_GUIClass", "Hide", nullptr));
     } // retranslateUi
 
 };

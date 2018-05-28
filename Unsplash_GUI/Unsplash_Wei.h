@@ -14,6 +14,7 @@ namespace unsplash
 	{
 	protected:
 		std::string sourceURL;
+		std::string imgURL; //imgURL is sourceURL appended with resolution info
 		CURL* curlIMG; // curl opinter to the web content
 		CURLcode curlRes = CURLcode(0);// curl perform error code
 		FILE* tempIMG; // pointer to the temp image file

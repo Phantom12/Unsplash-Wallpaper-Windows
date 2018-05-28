@@ -26,6 +26,9 @@ unsplash::Unsplash_Wei::Unsplash_Wei()
 	logFileStream.close();*/
 	tempImgDir = tempFolder;
 	tempImgDir += "UnsplashTemp.jpg";
+
+	//default sourceURL
+	sourceURL = "https://source.unsplash.com/random/";
 	
 	//default auto refresh interval
 	refreshPeriod = 1.f;
@@ -57,6 +60,9 @@ unsplash::Unsplash_Wei::Unsplash_Wei(float interval, std::string saveLoc, int wa
 	logFileStream.close();*/
 	tempImgDir = tempFolder;
 	tempImgDir += "UnsplashTemp.jpg";
+
+	//default sourceURL
+	sourceURL = "https://source.unsplash.com/random/";
 
 	//default auto refresh interval
 	refreshPeriod = interval;
@@ -102,19 +108,20 @@ void unsplash::Unsplash_Wei::setDefaultSaveLoc()
 void unsplash::Unsplash_Wei::setURL()
 {
 	//printf("%d\n", GetSystemMetrics(SM_CXSCREEN));
-	sourceURL = "https://source.unsplash.com/featured/";
+	//sourceURL = "https://source.unsplash.com/featured/";
+	imgURL = sourceURL;
 
 	if (WIDTH*HEIGHT)
 	{
-		sourceURL += std::to_string(WIDTH);
-		sourceURL += "x";
-		sourceURL += std::to_string(HEIGHT);
+		imgURL += std::to_string(WIDTH);
+		imgURL += "x";
+		imgURL += std::to_string(HEIGHT);
 	}
 	else if (!differentWallpaperPerMonitor)
 	{
-		sourceURL += std::to_string(GetSystemMetrics(SM_CXSCREEN));
-		sourceURL += "x";
-		sourceURL += std::to_string(GetSystemMetrics(SM_CYSCREEN));
+		imgURL += std::to_string(GetSystemMetrics(SM_CXSCREEN));
+		imgURL += "x";
+		imgURL += std::to_string(GetSystemMetrics(SM_CYSCREEN));
 		
 		/*std::fstream logFileStream;
 		logFileStream.open("log.txt", std::fstream::out | std::fstream::app);
@@ -148,19 +155,19 @@ void unsplash::Unsplash_Wei::setURL()
 			}// end of if GetMonitorRECT failed
 		}// end of if GetMonitorDevicePathAt failed
 
-		sourceURL += std::to_string(lclWidth);
-		sourceURL += "x";
-		sourceURL += std::to_string(lclHeight);
+		imgURL += std::to_string(lclWidth);
+		imgURL += "x";
+		imgURL += std::to_string(lclHeight);
 
 		/*std::fstream logFileStream;
 		logFileStream.open("log.txt", std::fstream::out | std::fstream::app);
-		logFileStream << sourceURL.c_str() << std::endl;
+		logFileStream << imgURL.c_str() << std::endl;
 		logFileStream.close();*/
 	}
 	
 	//sourceURL = "https://source.unsplash.com/featured/3840x2160";
 	//printf("%s", sourceURL.c_str()); // not recommended
-	std::cout << sourceURL << std::endl;
+	//std::cout << sourceURL << std::endl;
 }
 
 int unsplash::Unsplash_Wei::getIMG()
@@ -175,7 +182,7 @@ int unsplash::Unsplash_Wei::getIMG()
 
 	curlIMG = curl_easy_init();
 
-	curl_easy_setopt(curlIMG, CURLOPT_URL, sourceURL.c_str());
+	curl_easy_setopt(curlIMG, CURLOPT_URL, imgURL.c_str());
 	curl_easy_setopt(curlIMG, CURLOPT_WRITEDATA, tempIMG);
 	//curl_easy_setopt(curlIMG, CURLOPT_WRITEFUNCTION, NULL);
 	curl_easy_setopt(curlIMG, CURLOPT_FOLLOWLOCATION, 1);
